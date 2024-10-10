@@ -10,8 +10,6 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatInput } from '@angular/material/input';
-import { MatSuffix } from '@angular/material/form-field';
 import {NgIf} from "@angular/common";
 
 @Component({
@@ -27,7 +25,7 @@ import {NgIf} from "@angular/common";
         </button>
       </mat-form-field>
     </div>
-    <div *ngIf="!isApiKeySet" style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+    <div *ngIf="!isApiKeySet" style="display: flex; justify-content: center; align-items: center; margin-top: 0;">
       <mat-form-field style="width: 70%;">
         <mat-label>Ingrese el apiKey</mat-label>
         <input matInput #urlInput type="text" />
@@ -37,7 +35,7 @@ import {NgIf} from "@angular/common";
       </mat-form-field>
     </div>
     <mat-card>
-      <mat-card-content style="position: relative; display: flex; justify-content: center; align-items: center; width: 100%; height: 481px;">
+      <mat-card-content style="position: relative; display: flex; justify-content: center; align-items: center; width: 100%; height: 600px; margin-top: 10px">
         <canvas #canvasElement style="position: absolute;"></canvas>
         <canvas #overlayCanvas style="position: absolute;"></canvas>
         <!-- Botón centrado para cambiar de cámara -->
