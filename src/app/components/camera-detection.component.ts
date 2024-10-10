@@ -97,6 +97,7 @@ export class CameraDetectionComponent implements OnInit {
           interval(750).subscribe(() => {
             if (!this.isProcessing && this.isUrlSet) {
               this.captureAndSendImage();
+              console.log(this.isProcessing || this.detectedBoxesArray.length === 0 || !this.isApiKeySet)
             }
           });
         }
@@ -159,7 +160,6 @@ export class CameraDetectionComponent implements OnInit {
 
   // Captura la imagen de la cámara y envía la solicitud
   private captureAndSendImage(): void {
-    this.isProcessing = true;
     const canvasElement = this.canvas.nativeElement;
     const context = canvasElement.getContext('2d');
 
@@ -177,15 +177,11 @@ export class CameraDetectionComponent implements OnInit {
       this.http.post<any>(`${this.serverUrl}/process_image`, data).subscribe(
         response => {
           this.drawDetections(response.detections);
-          this.isProcessing = false;
         },
         error => {
           console.error('Error en la llamada a la API: ', error);
-          this.isProcessing = false;
         }
       );
-    } else {
-      this.isProcessing = false;
     }
   }
 
